@@ -5,9 +5,10 @@
     justify-content: center;
 }
 .contendorHijo{
+    display: grid;
     border: 1px solid black;
     color: blue;
     text-align: center;
-    vertical-align: center;
     align-items: center;
 }
+    
