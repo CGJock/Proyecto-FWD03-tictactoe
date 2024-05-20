@@ -21,7 +21,7 @@ let cuadricula =[
     [pos3, pos4, pos5],
     [pos6, pos7, pos8]
 ]
-
+let column = []
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Funcion que verifica los turnos de los jugadores, revisa el valor de player, y devuele el valor opuesto
 //se declara una variable que va ser igual a una funcion de esta manera es posible llamar la funcion despues
@@ -37,27 +37,83 @@ const verificarPlayer = function(player) {//se puede declarar el parametro de la
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function verificarWiner(winnerRow0,winnerRow1,winnerRow2) {
-   winnerRow0 = cuadricula[0].reduce((acumulador, valorActual) => {
-      return acumulador + valorActual
-   },0);
-   winnerRow1 = cuadricula[1].reduce((acumulador, valorActual) => {
-      return acumulador + valorActual
-   },0);
-   winnerRow2 = cuadricula[2].reduce((acumulador, valorActual) => {
-      return acumulador + valorActual
-   },0);
-   if (winnerRow0 === 3 || winnerRow1 === 3 || winnerRow2 === 3) {
-      return alert("ganador player x")
-   } else if(winnerRow0 === 15 || winnerRow1 === 15 || winnerRow2 === 15){
-      return alert("ganador player o")
-   }
+function verificarWiner(cuadricula) {
+
+   let contX = 0;
+   let contO = 0;
    
-  
-   if (clicks == 9) {
+   for (let j = 0; j < cuadricula.length; j++) {
+         winnerRow = cuadricula[j].reduce((acumulador, valorActual) => {
+         return acumulador + valorActual
+      },0);
+      for (let index = 0; index < cuadricula.length; index++) {
+         if (cuadricula[j][index] == 1) {
+            contX++;
+            console.log(contX);
+         }else if (cuadricula[j][index] == 5) {
+            contO++;
+            console.log(contO);
+         }
+         if (winnerRow == 3) {
+            alert("ganador jugador x")
+            break
+         }else if(winnerRow == 15){
+            alert("ganador jugador o")
+            break
+         }
+      } 
+      // }
+      // if (contX == 3) {
+      //    return alert("ganador player x")
+      // }else if (contO == 3) {
+      //    return alert("ganador player O")
+      // }
+      // contO = 0;
+      // contX = 0;
+   }
+   for (let i = 0; i < cuadricula.length; i++) {
+      for (let j = 0; j < cuadricula[i].length; j++) {
+       column[j] = (column[j] || 0) + cuadricula[i][j];
+        console.log(column[j])
+         
+      }
+      if (column == 3) {
+         alert("ganador x")
+         break
+      }
+      
+   }
+
+  if (clicks == 9) {
       return alert("empate")
    }
 }
+
+function prueba() {
+
+   let matriz = [
+      ["0", "1", "2"],
+      ["3", "4", "5"],
+      ["6", "7", "8"]
+   ]
+
+
+   for (let j = 0; j < matriz.length; j++) {
+      console.log("For de afuera" + j)
+      for (let i = 0; i < matriz.length; i++) {
+            console.log("For de adentro" + i)
+            console.log(matriz[j][i]);
+      }
+      
+   }
+
+
+}
+
+prueba();
+
+
+
 
 
 
@@ -70,7 +126,7 @@ contenedores[0].addEventListener("click",function addSimbol() {
       }
        player = verificarPlayer(player) //se llama la funcion player asignandole este nuevo valor a player
        contenedores[0].removeEventListener("click", addSimbol)
-       verificarWiner()
+       verificarWiner(cuadricula)
        console.log(cuadricula)
        
       
@@ -87,7 +143,7 @@ contenedores[1].addEventListener("click", function addSimbol() {
    }
    player = verificarPlayer(player)
    contenedores[1].removeEventListener("click", addSimbol)
-   verificarWiner()
+   verificarWiner(cuadricula)
    console.log(cuadricula)
    
 })
@@ -103,7 +159,7 @@ contenedores[2].addEventListener("click", function addSimbol() {
    }
    player = verificarPlayer(player)
    contenedores[2].removeEventListener("click", addSimbol)
-   verificarWiner()
+   verificarWiner(cuadricula)
    console.log(cuadricula)
    
 })
@@ -117,7 +173,7 @@ contenedores[3].addEventListener("click", function addSimbol() {
    }
    player = verificarPlayer(player)
    contenedores[3].removeEventListener("click", addSimbol)
-   verificarWiner()
+   verificarWiner(cuadricula)
    
 })
 
@@ -130,7 +186,7 @@ contenedores[4].addEventListener("click", function addSimbol() {
    }
    player = verificarPlayer(player)
    contenedores[4].removeEventListener("click", addSimbol)
-   verificarWiner()
+   verificarWiner(cuadricula)
 })
 
 contenedores[5].addEventListener("click", function addSimbol() {
@@ -142,7 +198,7 @@ contenedores[5].addEventListener("click", function addSimbol() {
    }
    player = verificarPlayer(player)
    contenedores[5].removeEventListener("click", addSimbol)
-   verificarWiner()
+   verificarWiner(cuadricula)
       
 })
 contenedores[6].addEventListener("click", function addSimbol() {
@@ -154,7 +210,7 @@ contenedores[6].addEventListener("click", function addSimbol() {
    }
    player = verificarPlayer(player)
    contenedores[6].removeEventListener("click", addSimbol)
-   verificarWiner()
+   verificarWiner(cuadricula)
       
 })
 contenedores[7].addEventListener("click", function addSimbol() {
@@ -166,7 +222,7 @@ contenedores[7].addEventListener("click", function addSimbol() {
    }
    player = verificarPlayer(player)
    contenedores[7].removeEventListener("click", addSimbol)
-   verificarWiner()
+   verificarWiner(cuadricula)
 })
 contenedores[8].addEventListener("click", function addSimbol() {
    clicks = clicks + 1
@@ -177,7 +233,7 @@ contenedores[8].addEventListener("click", function addSimbol() {
    }
    player = verificarPlayer(player)
    contenedores[8].removeEventListener("click", addSimbol)
-   verificarWiner()
+   verificarWiner(cuadricula)
 })
  
 
