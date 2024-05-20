@@ -71,6 +71,13 @@ function verificarWiner(cuadricula) {
       // contO = 0;
       // contX = 0;
    }
+   for (let index = 0; index < cuadricula.length; index++) {
+    
+      console.log(cuadricula[index][1]);
+   }
+
+
+
    for (let i = 0; i < cuadricula.length; i++) {
       for (let j = 0; j < cuadricula[i].length; j++) {
        column[j] = (column[j] || 0) + cuadricula[i][j];
