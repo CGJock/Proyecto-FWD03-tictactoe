@@ -18,8 +18,8 @@ let clicks = 0
 //grupo de arrays que simulan ser una matriz
 let cuadricula =[
     ["", "", ""],
-    [pos3, pos4, pos5],
-    [pos6, pos7, pos8]
+    ["", "", ""],
+    ["", "", ""]
 ]
 let column = []
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,55 +38,51 @@ const verificarPlayer = function(player) {//se puede declarar el parametro de la
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function verificarWiner(cuadricula) {
-
-   let contX = 0;
-   let contO = 0;
-   
    for (let j = 0; j < cuadricula.length; j++) {
          winnerRow = cuadricula[j].reduce((acumulador, valorActual) => {
          return acumulador + valorActual
       },0);
       for (let index = 0; index < cuadricula.length; index++) {
-         if (cuadricula[j][index] == 1) {
-            contX++;
-            console.log(contX);
-         }else if (cuadricula[j][index] == 5) {
-            contO++;
-            console.log(contO);
-         }
+       
+        
          if (winnerRow == 3) {
             alert("ganador jugador x")
+            
             break
          }else if(winnerRow == 15){
-            alert("ganador jugador o")
+         alert("ganador jugador o")
             break
          }
       } 
-      // }
-      // if (contX == 3) {
-      //    return alert("ganador player x")
-      // }else if (contO == 3) {
-      //    return alert("ganador player O")
-      // }
-      // contO = 0;
-      // contX = 0;
+     
    }
+  
    for (let i = 0; i < cuadricula.length; i++) {
-      for (let j = 0; j < cuadricula[i].length; j++) {
-       column[j] = (column[j] || 0) + cuadricula[i][j];
-        console.log(column[j])
-         
+      let contadorX = 0
+      let contadorO = 0
+      for (let j = 0; j < cuadricula.length; j++) {
+        if (cuadricula[j][i] == 1) {
+         contadorX++
+         console.log(contadorX)
+      } else if(cuadricula[j][i] == 5){
+         contadorO++
+         console.log(contadorO)
       }
-      if (column == 3) {
+      if (contadorX == 3) {
          alert("ganador x")
-         break
+      } else if (contadorO == 3){
+         alert("ganador o")
+      }
       }
       
-   }
-
+      } 
+             
   if (clicks == 9) {
-      return alert("empate")
-   }
+   return alert("empate")
+}
+
+   
+ 
 }
 
 function prueba() {
@@ -99,10 +95,15 @@ function prueba() {
 
 
    for (let j = 0; j < matriz.length; j++) {
-      console.log("For de afuera" + j)
+      let contador = 0;
       for (let i = 0; i < matriz.length; i++) {
-            console.log("For de adentro" + i)
-            console.log(matriz[j][i]);
+           if (matriz[i][j] === "X") {
+             alert("xs")
+             contador++
+           }
+           if (contador === 3) {
+            alert("xd")
+           }
       }
       
    }
@@ -127,7 +128,8 @@ contenedores[0].addEventListener("click",function addSimbol() {
        player = verificarPlayer(player) //se llama la funcion player asignandole este nuevo valor a player
        contenedores[0].removeEventListener("click", addSimbol)
        verificarWiner(cuadricula)
-       console.log(cuadricula)
+       
+       
        
       
       
@@ -144,7 +146,7 @@ contenedores[1].addEventListener("click", function addSimbol() {
    player = verificarPlayer(player)
    contenedores[1].removeEventListener("click", addSimbol)
    verificarWiner(cuadricula)
-   console.log(cuadricula)
+   
    
 })
 
