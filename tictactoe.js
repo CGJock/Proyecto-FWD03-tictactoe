@@ -63,19 +63,39 @@ function verificarWiner(cuadricula) {
       for (let j = 0; j < cuadricula.length; j++) {
         if (cuadricula[j][i] == 1) {
          contadorX++
-         console.log(contadorX)
       } else if(cuadricula[j][i] == 5){
          contadorO++
-         console.log(contadorO)
-      }
+      } 
       if (contadorX == 3) {
          alert("ganador x")
       } else if (contadorO == 3){
          alert("ganador o")
-      }
+         } 
       }
       
-      } 
+   } 
+   contadorDx = 0 // contador que hace las validaciones en diagonal
+   contadorDo = 0
+   for (let i = 0; i < cuadricula.length; i++) {
+         if (cuadricula[i][i] == 1) {
+         contadorDx++
+         } else if (cuadricula[i][i] == 5) {
+         contadorDo++
+         }
+         if (contadorDx == 3) {
+            alert("ganador x")
+         }else if (contadorDo == 5) {
+             alert("gano o")
+         }
+    }
+    
+    contadorRdX = 0
+    contadorRdO = 0
+    for (let i = 3; i < cuadricula.length - 1; i--) {
+      console.log(cuadricula[i][i])
+      
+    }
+   
              
   if (clicks == 9) {
    return alert("empate")
@@ -90,21 +110,12 @@ function prueba() {
    let matriz = [
       ["0", "1", "2"],
       ["3", "4", "5"],
-      ["6", "7", "8"]
+      ["6", "7", "9"]
    ]
 
 
-   for (let j = 0; j < matriz.length; j++) {
-      let contador = 0;
-      for (let i = 0; i < matriz.length; i++) {
-           if (matriz[i][j] === "X") {
-             alert("xs")
-             contador++
-           }
-           if (contador === 3) {
-            alert("xd")
-           }
-      }
+   for (let i = 2; i == 0; i--) {
+      console.log(matriz[i][i])
       
    }
 
@@ -162,7 +173,7 @@ contenedores[2].addEventListener("click", function addSimbol() {
    player = verificarPlayer(player)
    contenedores[2].removeEventListener("click", addSimbol)
    verificarWiner(cuadricula)
-   console.log(cuadricula)
+   
    
 })
 
