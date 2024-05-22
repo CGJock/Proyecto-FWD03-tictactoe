@@ -21,7 +21,7 @@ let cuadricula =[
     ["", "", ""],
     ["", "", ""]
 ]
-let column = []
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Funcion que verifica los turnos de los jugadores, revisa el valor de player, y devuele el valor opuesto
 //se declara una variable que va ser igual a una funcion de esta manera es posible llamar la funcion despues
@@ -40,12 +40,10 @@ const verificarPlayer = function(player) {//se puede declarar el parametro de la
 function verificarWiner(cuadricula) {
    for (let j = 0; j < cuadricula.length; j++) {
          winnerRow = cuadricula[j].reduce((acumulador, valorActual) => {
+
          return acumulador + valorActual
       },0);
-      for (let index = 0; index < cuadricula.length; index++) {
-       
-        
-         if (winnerRow == 3) {
+        if (winnerRow == 3) {
             alert("ganador jugador x")
             
             break
@@ -53,7 +51,6 @@ function verificarWiner(cuadricula) {
          alert("ganador jugador o")
             break
          }
-      } 
      
    }
   
@@ -63,13 +60,13 @@ function verificarWiner(cuadricula) {
       for (let j = 0; j < cuadricula.length; j++) {
         if (cuadricula[j][i] == 1) {
          contadorX++
-      } else if(cuadricula[j][i] == 5){
-         contadorO++
-      } 
-      if (contadorX == 3) {
-         alert("ganador x")
-      } else if (contadorO == 3){
-         alert("ganador o")
+         } else if(cuadricula[j][i] == 5){
+            contadorO++
+         } 
+         if (contadorX == 3) {
+            alert("ganador x")
+         } else if (contadorO == 3){
+            alert("ganador o")
          } 
       }
       
@@ -84,15 +81,32 @@ function verificarWiner(cuadricula) {
          }
          if (contadorDx == 3) {
             alert("ganador x")
-         }else if (contadorDo == 5) {
+         }else if (contadorDo == 3) {
              alert("gano o")
          }
     }
     
     contadorRdX = 0
     contadorRdO = 0
-    for (let i = 3; i < cuadricula.length - 1; i--) {
-      console.log(cuadricula[i][i])
+    let n = 3; //n es equivalente al numero de columnas
+    for (let i = 0; i < cuadricula.length; i++) {
+      for (let j = 0; j < cuadricula.length; j++) {
+         if (i + j == n - 1) {
+            if (cuadricula[i][j] == 1) {
+               contadorRdX++
+               console.log("estoy valiando el pimero numero de la diagonal inversa")
+            } else if(cuadricula[i][j] == 5) {
+               contadorRdO++
+            }
+            if (contadorRdX == 3) {
+               alert("ganador x")
+            }else if (contadorRdO == 3) {
+                alert("gano o")
+            }
+
+         }
+         
+      }
       
     }
    
@@ -114,10 +128,7 @@ function prueba() {
    ]
 
 
-   for (let i = 2; i == 0; i--) {
-      console.log(matriz[i][i])
-      
-   }
+   
 
 
 }
@@ -125,7 +136,20 @@ function prueba() {
 prueba();
 
 
+ 
+// for (let i = 0; i < contenedores.length; i++) {
+//    contenedores[i].addEventListener("click", function addSimbol(cuadricula) {
+//       contenedores[i].innerHTML = "x";
+//       if (contenedores[i].innerHTML = "x") {
+//          cuadricula[0][0] = 1
+//       }
+//       console.log(cuadricula);
+//    })
+   
+// }
 
+      
+         
 
 
 
