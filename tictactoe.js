@@ -1,12 +1,4 @@
-let pos0 = document.getElementById("vectorPoscicion0");
-let pos1 = document.getElementById("vectorPoscicion1");
-let pos2 = document.getElementById("vectorPoscicion2");
-let pos3 = document.getElementById("vectorPoscicion3");
-let pos4 = document.getElementById("vectorPoscicion4");
-let pos5 = document.getElementById("vectorPoscicion5");
-let pos6 = document.getElementById("vectorPoscicion6");
-let pos7 = document.getElementById("vectorPoscicion7");
-let pos8 = document.getElementById("vectorPoscicion8");
+
 let contenedores = document.getElementsByClassName("contendorHijo")
 
 //variable player que contiene un booleano para determinar el valor en innerhtml correspondiente al jugador
@@ -43,11 +35,13 @@ function verificarWiner(cuadricula) {
 
          return acumulador + valorActual
       },0);
-        if (winnerRow == 3) {
+        if (winnerRow == 6) {
+         clicks--
             alert("ganador jugador x")
             
             break
          }else if(winnerRow == 15){
+         clicks--
          alert("ganador jugador o")
             break
          }
@@ -58,14 +52,16 @@ function verificarWiner(cuadricula) {
       let contadorX = 0
       let contadorO = 0
       for (let j = 0; j < cuadricula.length; j++) {
-        if (cuadricula[j][i] == 1) {
+        if (cuadricula[j][i] == 2) {
          contadorX++
          } else if(cuadricula[j][i] == 5){
             contadorO++
          } 
          if (contadorX == 3) {
+            clicks--
             alert("ganador x")
          } else if (contadorO == 3){
+            clicks--
             alert("ganador o")
          } 
       }
@@ -74,14 +70,16 @@ function verificarWiner(cuadricula) {
    contadorDx = 0 // contador que hace las validaciones en diagonal
    contadorDo = 0
    for (let i = 0; i < cuadricula.length; i++) {
-         if (cuadricula[i][i] == 1) {
+         if (cuadricula[i][i] == 2) {
          contadorDx++
          } else if (cuadricula[i][i] == 5) {
          contadorDo++
          }
          if (contadorDx == 3) {
+            clicks--
             alert("ganador x")
          }else if (contadorDo == 3) {
+            clicks--
              alert("gano o")
          }
     }
@@ -92,15 +90,18 @@ function verificarWiner(cuadricula) {
     for (let i = 0; i < cuadricula.length; i++) {
       for (let j = 0; j < cuadricula.length; j++) {
          if (i + j == n - 1) {
-            if (cuadricula[i][j] == 1) {
+            if (cuadricula[i][j] == 2) {
                contadorRdX++
                console.log("estoy valiando el pimero numero de la diagonal inversa")
+               console.log(clicks)
             } else if(cuadricula[i][j] == 5) {
                contadorRdO++
             }
             if (contadorRdX == 3) {
+               clicks--
                alert("ganador x")
             }else if (contadorRdO == 3) {
+               clicks--
                 alert("gano o")
             }
 
@@ -111,168 +112,51 @@ function verificarWiner(cuadricula) {
     }
    
              
-  if (clicks == 9) {
-   return alert("empate")
+  if (clicks === 9) {
+   alert("empate")
 }
 
    
  
 }
 
-function prueba() {
-
-   let matriz = [
-      ["0", "1", "2"],
-      ["3", "4", "5"],
-      ["6", "7", "9"]
-   ]
-
-
-   
-
-
-}
-
-prueba();
 
 
  
-// for (let i = 0; i < contenedores.length; i++) {
-//    contenedores[i].addEventListener("click", function addSimbol(cuadricula) {
-//       contenedores[i].innerHTML = "x";
-//       if (contenedores[i].innerHTML = "x") {
-//          cuadricula[0][0] = 1
-//       }
-//       console.log(cuadricula);
-//    })
+for (let i = 0; i < contenedores.length; i++) {
+   contenedores[i].addEventListener("click", function addSimbol() {
+      clicks++
+      if (player === false) {
+         contenedores[i].innerHTML = "x";
+      } else if (player === true) {
+         contenedores[i].innerHTML = "o";
+      }
+      contenedores[i].removeEventListener("click", addSimbol)
+      player = verificarPlayer(player)
+      game()
+   })
    
-// }
+}
+
+function game() {
+   let row = parseInt(event.target.dataset.row);
+   let col = parseInt(event.target.dataset.col);
+   if (event.target.innerHTML == "x") {
+   cuadricula[row][col] = 2
+   console.log(cuadricula);
+  } else if (event.target.innerHTML == "o") {
+   cuadricula[row][col] = 5
+   console.log(cuadricula);
+  }
+  verificarWiner(cuadricula)
+  
+}
 
       
          
 
 
 
-contenedores[0].addEventListener("click",function addSimbol() {
-      clicks = clicks + 1
-      if (player === false){
-         cuadricula[0][0] = 1 , pos0.innerHTML = "x" //el valor de 1 en la matriz sera usado para evaluar las condicione de victoria de manera matematica
-      } else if(player === true){
-         cuadricula[0][0] = 5, pos0.innerHTML = "o"  // elegi valore totalmente distintos para evitar confusiones por valores muy cercanos
-      }
-       player = verificarPlayer(player) //se llama la funcion player asignandole este nuevo valor a player
-       contenedores[0].removeEventListener("click", addSimbol)
-       verificarWiner(cuadricula)
-       
-       
-       
-      
-      
-})
-
-
-contenedores[1].addEventListener("click", function addSimbol() {
-   clicks = clicks + 1
-   if (player === false){
-      cuadricula[0][1] = 1 , pos1.innerHTML = "x"
-   } else if(player === true){
-      cuadricula[0][1] = 5, pos1.innerHTML = "o"
-   }
-   player = verificarPlayer(player)
-   contenedores[1].removeEventListener("click", addSimbol)
-   verificarWiner(cuadricula)
-   
-   
-})
-
-
-
-contenedores[2].addEventListener("click", function addSimbol() {
-   clicks = clicks + 1
-   if (player === false){
-      cuadricula[0][2] = 1, pos2.innerHTML = "x"
-   } else if(player === true){
-      cuadricula[0][2] = 5, pos2.innerHTML = "o"
-   }
-   player = verificarPlayer(player)
-   contenedores[2].removeEventListener("click", addSimbol)
-   verificarWiner(cuadricula)
-   
-   
-})
-
-contenedores[3].addEventListener("click", function addSimbol() {
-   clicks = clicks + 1
-   if (player === false){
-      cuadricula[1][0] = 1, pos3.innerHTML = "x"
-   } else if(player === true){
-      cuadricula[1][0] = 5, pos3.innerHTML = "o"
-   }
-   player = verificarPlayer(player)
-   contenedores[3].removeEventListener("click", addSimbol)
-   verificarWiner(cuadricula)
-   
-})
-
-contenedores[4].addEventListener("click", function addSimbol() {
-   clicks = clicks + 1
-   if (player === false){
-      cuadricula[1][1] = 1, pos4.innerHTML = "x"
-   } else if(player === true){
-      cuadricula[1][1] = 5, pos4.innerHTML = "o"
-   }
-   player = verificarPlayer(player)
-   contenedores[4].removeEventListener("click", addSimbol)
-   verificarWiner(cuadricula)
-})
-
-contenedores[5].addEventListener("click", function addSimbol() {
-   clicks = clicks + 1
-   if (player === false){
-      cuadricula[1][2] = 1, pos5.innerHTML = "x"
-   } else if(player === true){
-      cuadricula[1][2] = 5, pos5.innerHTML = "o"
-   }
-   player = verificarPlayer(player)
-   contenedores[5].removeEventListener("click", addSimbol)
-   verificarWiner(cuadricula)
-      
-})
-contenedores[6].addEventListener("click", function addSimbol() {
-   clicks = clicks + 1
-   if (player === false){
-      cuadricula[2][0] = 1, pos6.innerHTML = "x"
-   } else if(player === true){
-      cuadricula[2][0] = 5, pos6.innerHTML = "o"
-   }
-   player = verificarPlayer(player)
-   contenedores[6].removeEventListener("click", addSimbol)
-   verificarWiner(cuadricula)
-      
-})
-contenedores[7].addEventListener("click", function addSimbol() {
-   clicks = clicks + 1
-   if (player === false){
-      cuadricula[2][1] = 1, pos7.innerHTML = "x"
-   } else if(player === true){
-      cuadricula[2][1] = 5, pos7.innerHTML = "o"
-   }
-   player = verificarPlayer(player)
-   contenedores[7].removeEventListener("click", addSimbol)
-   verificarWiner(cuadricula)
-})
-contenedores[8].addEventListener("click", function addSimbol() {
-   clicks = clicks + 1
-   if (player === false){
-      cuadricula[2][2] = 1, pos8.innerHTML = "x"
-   } else if(player === true){
-      cuadricula[2][2] = 5, pos8.innerHTML = "o"
-   }
-   player = verificarPlayer(player)
-   contenedores[8].removeEventListener("click", addSimbol)
-   verificarWiner(cuadricula)
-})
- 
 
 
 
