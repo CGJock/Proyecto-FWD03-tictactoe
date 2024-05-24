@@ -1,6 +1,17 @@
+body{
+    background-image: url(/img/sleepy-sheep-5101117.jpg);
+    
+}
 .contenedorBotones{
     display: flex;
+    background-color: white;
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    
+}
+.butonOptions{
+    background-color: transparent;
+    border: solid black 1px;
+    border-radius: 8px;
 }

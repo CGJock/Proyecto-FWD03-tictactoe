@@ -48,7 +48,6 @@ function verificarWiner2(cuadricula2) {
    for (let i = 0; i < cuadricula2.length; i++) {
       let contadorX = 0
       let contadorO = 0
-     // console.log(contadorO);
       for (let j = 0; j < cuadricula2.length; j++) {
         if (cuadricula2[j][i] == 2) {
          contadorX++
@@ -90,8 +89,6 @@ function verificarWiner2(cuadricula2) {
          if (i + j == n - 1) {
             if (cuadricula2[i][j] == 2) {
                contadorRdX++
-               //console.log("estoy valiando el pimero numero de la diagonal inversa")
-             //  console.log(clicks2)
             } else if(cuadricula2[i][j] == 5) {
                contadorRdO++
             }
@@ -135,22 +132,6 @@ for (let i = 0; i < contenedores2.length; i++) {
 }
 
 
-// function gamepvsp() {
-//    let row1 = parseInt(event.target.dataset.row1);
-//    let col1 = parseInt(event.target.dataset.col1);
-//    if (event.target.innerHTML == "x") {
-//   cuadricula2[row1][col1] = 2
-  
-//   } else if (event.target.innerHTML == "o") {
-//    cuadricula2[row1][col1] = 5
-//   }
-
-//   for (let index = 0; index < 9; index++) {
-//    if (contenedores2[index].textContent === "o") {
-//      }
-// }
-// verificarWiner(cuadricula2)
-// }
 
       
          

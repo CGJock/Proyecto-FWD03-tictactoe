@@ -1,7 +1,7 @@
 
 let contenedores = document.getElementsByClassName("contendorHijo")
 let mostrarpvsbot = document.getElementById("mostrar pvsbot")
-
+let pTurno = document.getElementById("pTurno")
 
 
 //variable player que contiene un booleano para determinar el valor en innerhtml correspondiente al jugador
@@ -22,10 +22,11 @@ let cuadricula =[
 //se declara una variable que va ser igual a una funcion de esta manera es posible llamar la funcion despues
 const verificarPlayer = function(player) {//se puede declarar el parametro de la funcion o ser especificado al llamarla
    if (player === false) {
-      return true
+      return  true
       
    } else if(player === true) //se checa que se cambie el valor boolean de player si se cumple la condicion
       return false
+      
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,6 +125,7 @@ for (let i = 0; i < contenedores.length; i++) {
       }
       contenedores[i].removeEventListener("click", addSimbol)
       player = verificarPlayer(player)
+      pTurno.innerHTML = "turno o"
       game()
    })
    
@@ -141,6 +143,7 @@ function bot() {
 
          cuadricula[row][col] = 5;
          contenedores[posicionAleatoria].innerHTML = "o";
+         pTurno.innerHTML = "turno x"
          verificarWiner(cuadricula)
          return player = false
          
@@ -160,55 +163,14 @@ function game() {
    
   
   }
+  
   setTimeout(() => {
    bot()
   }, 1000);
 
-//   for (let index = 0; index < 9; index++) {
-//    if (contenedores[index].textContent === "o") {
-//      }
-// }
+
 verificarWiner(cuadricula)
 }
-// function gamevsh() {
-//    let row = parseInt(event.target.dataset.row);
-//    let col = parseInt(event.target.dataset.col);
-//    if (event.target.innerHTML == "x") {
-//   cuadricula[row][col] = 2
-  
-  
-//   } else if (event.target.innerHTML == "o") {
-//    cuadricula[row][col] = 5
-   
-  
-//   }
-//   bot()
-
-// //   for (let index = 0; index < 9; index++) {
-// //    if (contenedores[index].textContent === "o") {
-// //      }
-// // }
-// verificarWiner(cuadricula)
-// }
-
-// function gamepvsp() {
-//    for (let i = 0; i < contenedores.length; i++) {
-//       contenedores[i].addEventListener("click", function addSimbol() {
-//          clicks++
-//          if (player === false) {
-//             contenedores[i].innerHTML = "x";
-//          } else if (player === true) {
-//             contenedores[i].innerHTML = "o";
-//          }
-//          contenedores[i].removeEventListener("click", addSimbol)
-//          player = verificarPlayer(player)
-//          verificarWiner(cuadricula)
-//       })
-   
-// }}
-      
-         
-
 
 
 

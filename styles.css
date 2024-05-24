@@ -30,4 +30,8 @@ body{
 .contendorHijo:hover, .contendorHijo2:hover{
     opacity: 0.7;
 }
-    
+ #pTurno{
+    color: white;
+    font-size: 50px;
+    font-weight: bolder;
+ }   
