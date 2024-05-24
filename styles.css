@@ -2,7 +2,9 @@ body{
     background-image: url(/img/sleepy-sheep-5101117.jpg);
     background-size: contain;
 }
+
 .contenedor, .contenedor2{
+    display: none;
     margin-top: 50px;
     color: white;
     display: grid;
@@ -11,6 +13,7 @@ body{
     grid-template-rows:  100px 100px 100px;
     justify-content: center;
 }
+
 .contendorHijo, .contendorHijo2{
     display: grid;
     height: 100px;
@@ -23,5 +26,8 @@ body{
     font-size: 70px;
     justify-content: center;
     text-shadow: 0px 5px 7px rgba(255, 255, 255, 0.463);
+}
+.contendorHijo:hover, .contendorHijo2:hover{
+    opacity: 0.7;
 }
     

@@ -113,7 +113,7 @@ function verificarWiner2(cuadricula2) {
 
 for (let i = 0; i < contenedores2.length; i++) {
     contenedores2[i].addEventListener("click", function addSimbol2() {
-       clicks++
+       clicks2++
        if (player2 === false) {
           contenedores2[i].innerHTML = "x";
        } else if (player2 === true) {

@@ -1,5 +1,8 @@
 
 let contenedores = document.getElementsByClassName("contendorHijo")
+let mostrarpvsbot = document.getElementById("mostrar pvsbot")
+
+
 
 //variable player que contiene un booleano para determinar el valor en innerhtml correspondiente al jugador
 let player = false
