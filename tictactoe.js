@@ -132,12 +132,15 @@ function bot() {
       let posicionAleatoria = Math.floor(Math.random() * 9);
       if (contenedores[posicionAleatoria].innerHTML === "") {
          
-         let row = contenedores[posicionAleatoria].getAttribute('row')
-         let col = contenedores[posicionAleatoria].getAttribute('col')
+         let row = contenedores[posicionAleatoria].getAttribute('row');
+         let col = contenedores[posicionAleatoria].getAttribute('col');
+         clicks++
 
-         cuadricula[row][col] = 5
-         contenedores[posicionAleatoria].innerHTML = "o"
+         cuadricula[row][col] = 5;
+         contenedores[posicionAleatoria].innerHTML = "o";
+         verificarWiner(cuadricula)
          return player = false
+         
       }
    }
 }
@@ -148,19 +151,58 @@ function game() {
    if (event.target.innerHTML == "x") {
   cuadricula[row][col] = 2
   
+  
   } else if (event.target.innerHTML == "o") {
    cuadricula[row][col] = 5
+   
   
   }
-  bot()
+  setTimeout(() => {
+   bot()
+  }, 1000);
 
-  for (let index = 0; index < 9; index++) {
-   if (contenedores[index].textContent === "o") {
-     }
-}
+//   for (let index = 0; index < 9; index++) {
+//    if (contenedores[index].textContent === "o") {
+//      }
+// }
 verificarWiner(cuadricula)
 }
+// function gamevsh() {
+//    let row = parseInt(event.target.dataset.row);
+//    let col = parseInt(event.target.dataset.col);
+//    if (event.target.innerHTML == "x") {
+//   cuadricula[row][col] = 2
+  
+  
+//   } else if (event.target.innerHTML == "o") {
+//    cuadricula[row][col] = 5
+   
+  
+//   }
+//   bot()
 
+// //   for (let index = 0; index < 9; index++) {
+// //    if (contenedores[index].textContent === "o") {
+// //      }
+// // }
+// verificarWiner(cuadricula)
+// }
+
+// function gamepvsp() {
+//    for (let i = 0; i < contenedores.length; i++) {
+//       contenedores[i].addEventListener("click", function addSimbol() {
+//          clicks++
+//          if (player === false) {
+//             contenedores[i].innerHTML = "x";
+//          } else if (player === true) {
+//             contenedores[i].innerHTML = "o";
+//          }
+//          contenedores[i].removeEventListener("click", addSimbol)
+//          player = verificarPlayer(player)
+//          verificarWiner(cuadricula)
+//       })
+   
+// }}
       
          
 

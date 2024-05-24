@@ -1,14 +1,27 @@
-.contenedor{
+body{
+    background-image: url(/img/sleepy-sheep-5101117.jpg);
+    background-size: contain;
+}
+.contenedor, .contenedor2{
+    margin-top: 50px;
+    color: white;
     display: grid;
+    gap: 20px;
     grid-template-columns:  100px 100px 100px;
     grid-template-rows:  100px 100px 100px;
     justify-content: center;
 }
-.contendorHijo{
+.contendorHijo, .contendorHijo2{
     display: grid;
+    height: 100px;
+    width: 100px;
+    color: white;
     border: 1px solid black;
-    color: blue;
-    text-align: center;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.502);
+    border-radius: 8px;
+    border: solid 1px white;
+    font-size: 70px;
+    justify-content: center;
+    text-shadow: 0px 5px 7px rgba(255, 255, 255, 0.463);
 }
     
