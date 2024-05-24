@@ -25,9 +25,6 @@ const verificarPlayer = function(player) {//se puede declarar el parametro de la
       return false
 }
 
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function verificarWiner(cuadricula) {
    for (let j = 0; j < cuadricula.length; j++) {
@@ -51,11 +48,13 @@ function verificarWiner(cuadricula) {
    for (let i = 0; i < cuadricula.length; i++) {
       let contadorX = 0
       let contadorO = 0
+     // console.log(contadorO);
       for (let j = 0; j < cuadricula.length; j++) {
         if (cuadricula[j][i] == 2) {
          contadorX++
          } else if(cuadricula[j][i] == 5){
             contadorO++
+            
          } 
          if (contadorX == 3) {
             clicks--
@@ -65,7 +64,6 @@ function verificarWiner(cuadricula) {
             alert("ganador o")
          } 
       }
-      
    } 
    contadorDx = 0 // contador que hace las validaciones en diagonal
    contadorDo = 0
@@ -92,8 +90,8 @@ function verificarWiner(cuadricula) {
          if (i + j == n - 1) {
             if (cuadricula[i][j] == 2) {
                contadorRdX++
-               console.log("estoy valiando el pimero numero de la diagonal inversa")
-               console.log(clicks)
+               //console.log("estoy valiando el pimero numero de la diagonal inversa")
+             //  console.log(clicks)
             } else if(cuadricula[i][j] == 5) {
                contadorRdO++
             }
@@ -104,25 +102,15 @@ function verificarWiner(cuadricula) {
                clicks--
                 alert("gano o")
             }
-
          }
-         
       }
-      
-    }
+   }
    
-             
-  if (clicks === 9) {
+   if (clicks === 9) {
    alert("empate")
+   }
 }
 
-   
- 
-}
-
-
-
- 
 for (let i = 0; i < contenedores.length; i++) {
    contenedores[i].addEventListener("click", function addSimbol() {
       clicks++
@@ -138,18 +126,39 @@ for (let i = 0; i < contenedores.length; i++) {
    
 }
 
+function bot() {
+      
+      for (let i = 0; i < 9; i++) {
+      let posicionAleatoria = Math.floor(Math.random() * 9);
+      if (contenedores[posicionAleatoria].innerHTML === "") {
+         
+         let row = contenedores[posicionAleatoria].getAttribute('row')
+         let col = contenedores[posicionAleatoria].getAttribute('col')
+
+         cuadricula[row][col] = 5
+         contenedores[posicionAleatoria].innerHTML = "o"
+         return player = false
+      }
+   }
+}
+   
 function game() {
    let row = parseInt(event.target.dataset.row);
    let col = parseInt(event.target.dataset.col);
    if (event.target.innerHTML == "x") {
-   cuadricula[row][col] = 2
-   console.log(cuadricula);
+  cuadricula[row][col] = 2
+  
   } else if (event.target.innerHTML == "o") {
    cuadricula[row][col] = 5
-   console.log(cuadricula);
-  }
-  verificarWiner(cuadricula)
   
+  }
+  bot()
+
+  for (let index = 0; index < 9; index++) {
+   if (contenedores[index].textContent === "o") {
+     }
+}
+verificarWiner(cuadricula)
 }
 
       
