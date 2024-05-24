@@ -1,5 +1,6 @@
 
 let contenedores2 = document.getElementsByClassName("contendorHijo2")
+let turnoia = document.getElementById("turnoia")
 
 //variable player2 que contiene un booleano para determinar el valor en innerhtml correspondiente al jugador
 let player2 = false
@@ -113,8 +114,10 @@ for (let i = 0; i < contenedores2.length; i++) {
        clicks2++
        if (player2 === false) {
           contenedores2[i].innerHTML = "x";
+          turnoia.innerHTML = "turno o"
        } else if (player2 === true) {
           contenedores2[i].innerHTML = "o";
+          turnoia.innerHTML ="turno x"
        }
        let row1 = parseInt(event.target.dataset.row1);
        let col1 = parseInt(event.target.dataset.col1);
